@@ -1,0 +1,25 @@
+{% extends "index.html" %}
+
+{% block content %}
+<h4 class="text-center shadow-sm" style="color: rgb(157, 129, 3);">Top user interact of the week</h4>
+{% for forum in forums %}
+{% if forum %}
+
+<div class="forum-wrapper">
+    <div class="forum">
+        <h5><a style="color: rgb(52, 15, 1);" href="/forum/{{forum.slush}}/">{{ forum.title }}</a></h5>
+        <!-- <p>{{forum.description}}</p> -->
+        <p style="color: rgb(13, 23, 66);">Author: <span style="color: rgb(171, 21, 2);">{{forum.owner.name}}</span></p>
+    </div>
+
+    <div class="reply small shadow-sm" >
+       <p ><a href="/reply/{{forum.slush}}/" style="color: rgb(14, 25, 44);">See reply</a></p>
+    </div>
+</div>
+
+{% else %}
+    <h3>There was an error occured while rying to load forum please try again later.</h3>
+{% endif %}
+
+{% endfor %}
+{% endblock %}

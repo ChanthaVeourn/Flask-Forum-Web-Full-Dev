@@ -1,0 +1,4 @@
+Please edit sqlalchemy_url in the file below:
++migration->env
++alembic.ini
++database->database.py

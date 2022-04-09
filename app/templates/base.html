@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+    {% block title %}
+        
+    {% endblock %}
+</head>
+<body>
+
+    <!--------------------------Nav Bar--------------------------->
+    <header>
+        <nav>
+            <ul>
+                <a class="nav-btn active" id="nav-btn" href="{{url_for('views.home')}}">Home</a>
+                <a class="nav-btn" id="nav-btn" href="{{ url_for('forum_blueprint.all_forum') }}">Forum</a>
+                <a class="nav-btn" id="nav-btn" href="#">About</a>
+                <a class="nav-btn" id="nav-btn" href="#">Service</a>
+                
+                {% if current_user.is_authenticated %}
+                <a class="nav-btn login-btn" id="nav-btn" href="{{ url_for('auth.logout') }}">Logout</a>
+                {% else %}
+                <a class="nav-btn login-btn" id="nav-btn" href="{{ url_for('auth.login') }}">Login</a>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+    
+    <!----------Contents----------------->
+    {% with flashed_messages = get_flashed_messages(with_categories=true) %}
+    {% if flashed_messages %}
+    {% for message in flashed_messages %}
+    <div class="alert alert-{{ message[0] }} text-center">
+    {{ message[1] }}
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}  
+    <div class="container">
+    {% block content %}
+        
+    {% endblock %}
+    </div>
+
+</body>
+
+<script src="{{ url_for('static', filename='index.js') }}"></script>
+</html>

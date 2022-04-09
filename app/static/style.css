@@ -1,0 +1,170 @@
+
+body,*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #222234;
+}
+
+header{
+    width: 100%;
+    height: 10%;
+    background-color: #2e2d24;
+}
+
+header > nav{
+    position: relative;
+    left: 49%;
+    width:50%;
+}
+
+nav > ul{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+nav  > ul  > li{
+    position: relative;
+    list-style: none;
+}
+
+a.nav-btn{
+    text-decoration: none;
+    color:aliceblue;
+    text-align: center;
+}
+
+ a.nav-btn:hover{
+    text-decoration: none;
+    color: rgb(13, 171, 174);
+}
+
+a.active{
+    border-bottom: paleturquoise 1px solid;
+}
+
+.container{
+    margin-top: 3em;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+
+.search{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.searchBox{
+    width: 70%;
+    border-radius:.2em 0 0 .2em;
+    border-right: none;
+}
+
+.searchBtn{
+    border-radius: 0 .2em .2em 0;
+}
+
+.searchBox, .searchBtn{
+    height: 2em;
+    overflow: hidden;
+    border: rgb(107, 5, 181) solid 1px;
+}
+
+section.top-search{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 2em;
+}
+
+
+.top-forum{
+    margin-top: 2em;
+    margin-bottom: 2em ;
+    display:inline-block;
+    width: 30%;
+}
+
+.top-forum > div > img{
+    width: 100%;
+}
+
+.top-forum > div > h4{
+    position: relative;
+    transform: translate(1em,-3em);
+    font-size: .5em;
+}
+
+.forumImg{
+    width: 100%;
+    height: 8em;
+}
+
+.forumInfo{
+   display: flex;
+   flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.authorProfile{
+    margin-top: 1em;
+    position: relative;
+    display: inline-block;
+    align-items: center;
+    left: 5%;
+}
+
+.authorProfile > img{
+    width:2em;
+    height: 2em;
+    border-radius: 50%;
+}
+
+.forumReaction{
+    position: relative;
+    right: 5%;
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.forumReaction > div > img{
+    width: 1em;
+    height: 1em;
+    border-radius: 30%;
+    background-color: white;
+}
+
+.authorProfile > h4, .forumReaction > div > h5{
+    font-size: .5em;
+    color: white;
+}
+
+
+
+
+
+.web-link{
+    display: flex;
+    gap: 3em;
+    justify-content: center;
+}
+
+

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2 style="color: rgba(199, 181, 18, 0.85); font-size: medium; ">My forum</h2>
+<table>
+    <tr>
+        <th>No</th>
+        <th>Title</th>
+        <th>Update</th>
+        <th>Delete</th>
+    </tr>
+    {% for forum in forums %}
+        <tr>
+            <td><a href="/forum/{{forum.slush}}" style="color: rgba(18, 7, 103, 0.85);"></a>{{forum.id}}</td>
+            <td><a href="/forum/{{forum.slush}}" style="color: rgba(18, 7, 103, 0.85);">{{forum.title}}</a></td>
+            <td><a href="/forum/update-forum/{{forum.id}}/" style="color: rgba(18, 7, 103, 0.85);">Update</a></td>
+            <td><a href="/forum/created-forum/delete/{{forum.id}}/" style="color: rgba(18, 7, 103, 0.85);">Delete</a></td>
+        </tr>
+    {% endfor %}
+</table>
+{% endblock %}

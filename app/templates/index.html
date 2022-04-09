@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+<title>Forum Home Page</title>
+{% endblock %}
+{% block content %}
+
+<form action="searched_forum" class="search" method="post">
+    <input class="searchBox" type="text" value="what are you looking for?">
+    <button type="submit" class="searchBtn">Search</button>
+</form>
+
+
+<!--------------------------Top Search Category--------------------------->
+<section class="top-search">
+
+    <div class="top-forum">
+        <div>
+            <img class="forumImg shadow-sm" src="{{ url_for('static', filename='pp.png') }}" alt="forumImg">
+            <h4>Lorem ipsum dolor sit amet consectetur adi </h4>
+        </div>
+        <div class="forumInfo shadow-sm">
+            <div class="authorProfile">
+                <img src="{{ url_for('static', filename='thanos.jpg') }}" alt="userIcon">
+                <h4>Thanos</h4>
+            </div>
+            
+            <div class="forumReaction">
+                <div>
+                    <img src="{{ url_for('static', filename='comment.png') }}" alt="reply">
+                    <h5>3789</h5>
+                </div>
+                <div>
+                    <img src="{{ url_for('static', filename='react.png') }}" alt="likeIcon">
+                    <h5>1000</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</section>
+
+
+<!--------------------------Footer--------------------------->
+
+<section class="footer">
+    <div class="web-link">
+        <a href="#"><img src="" alt="">YouTube</a>
+        <a href="#"><img src="" alt="">Facebook</a>
+        <a href="#"><img src="" alt="">Discord</a>
+        <a href="#"><img src="" alt="">Twitter</a>
+    </div>
+</section>
+{% endblock %}
+  

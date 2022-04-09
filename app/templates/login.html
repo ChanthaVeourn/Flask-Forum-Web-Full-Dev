@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Login</title>
+{% endblock %}
+
+{% block content %}
+    <form action="/auth/login/" method="POST">
+        
+        {{ form.csrf_token }}
+        {{form.email_address(class="form-control", placeholder="Email Address")}}
+        {{form.password(class="form-control", placeholder="Password")}}
+        {{form.sign_in(class="btn btn-primary btn-block btn-sm")}}
+
+    </form>
+    <br>
+    <div class="text-center">
+        <p>Don't have an account?</p>
+        <a class="btn-block btn-light" href="{{ url_for('auth.register') }}">Create Account</a>
+    </div>
+{% endblock %}

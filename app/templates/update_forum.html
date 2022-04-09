@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Create new forum</title>
+{% endblock %}
+
+{% block content %}
+<form action="/forum/update-forum/{{forum.id}}/" method="post">
+    {{form.csrf_token}}
+    {{form.title(value = forum.title, class = "form-control")}}
+    <br>
+    {{form.description(value = forum.description, class="form-control",  rows=4)}}
+    <br>
+    {{form.update(class="btn btn-primary btn-block btn-sm" )}}
+</form>
+{% endblock %}

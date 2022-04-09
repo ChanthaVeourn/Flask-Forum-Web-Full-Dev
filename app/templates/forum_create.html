@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Create new forum</title>
+{% endblock %}
+
+{% block content %}
+<form action="/forum/new-forum/" method="post">
+    {{form.csrf_token}}
+    {{form.title(placeholder = "Forum title", class = "form-control")}}
+    <br>
+    {{form.description(class="form-control", placeholder="Description")}}
+    <br>
+    {% if tags %}
+    <div class="text-center">
+    <label for="tags">Choose a Tag:</label>
+    <select name="tag" class="text-center">
+        {% for tag in tags%}
+            <option value="{{tag.name}}">{{tag.name}}</option>
+        {% endfor %}
+    </select>
+    </div>
+    {% endif %}
+    <br>
+    {{form.create(class="btn btn-primary btn-block btn-sm")}}
+    
+</form>
+{% endblock %}

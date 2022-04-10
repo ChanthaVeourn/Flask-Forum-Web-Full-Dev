@@ -38,7 +38,7 @@ def run_migrations_offline():
     script output.
 
     """
-    url = config.get_main_option("postgresql://postgres:admin@172.27.140.133:5432/forum_db")
+    url = config.get_main_option("postgresql://postgres:admin@172.27.131.76:5432/forum_db")
     context.configure(
         url=url,
         target_metadata=target_metadata,

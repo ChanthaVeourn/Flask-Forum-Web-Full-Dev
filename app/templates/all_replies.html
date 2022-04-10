@@ -1,21 +1,17 @@
 {% extends "index.html" %}
 
 {% block content %}
-<h4 class="text-center shadow-sm" style="color: rgb(157, 129, 3);">Top user interact of the week</h4>
-{% for reply in forums %}
-{% if reply %}
-
+<h4 class="text-center shadow-sm" style="color: rgb(157, 129, 3);">{{forum.title}}</h4>
+{% for reply in replies %}
 <div class="reply-wrapper">
     <div class="reply">
-        <p style="color: rgb(13, 23, 66);">User: <span style="color: rgb(171, 21, 2);">{{reply.user.name}}</span></p>
+        <p style="color: rgb(13, 23, 66);"><img src="/static/thanos.jpg" style="width: 3ch; height: 3ch; border-radius:50%;" ><span style="color: rgb(171, 21, 2);">{{reply.user.name}}</span></p>
         <h5 class="small">{{ reply.title }}</h5>
         <p class="shadow-sm">{{reply.description}}</p>
     </div>
 </div>
-
-{% else %}
-    <h5 class="small" style="color: darkblue;">No reply yet. Be the first to reply this post.</h5>
-{% endif %}
-
 {% endfor %}
+{% if not replies %}
+    <h5 class="small" style="color: darkblue;">No reply yet. Be the first to reply on this post.</h5>
+{% endif %}
 {% endblock %}

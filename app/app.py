@@ -16,7 +16,6 @@ for route in all_route:
     app.register_blueprint(route)
 
 def create_app(app=None,config=None):
-    
     if config:
         app.config.from_object(config)
     login_manager.init_app(app)

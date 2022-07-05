@@ -1,4 +1,4 @@
-from flask import render_template, redirect, url_for, Blueprint, request, abort, flash
+from flask import render_template, redirect, url_for, Blueprint, request, abort, flash, make_response
 from app.models import *
 from app.form import CreateForumForm, UpdateForumForm
 from app.database import session
@@ -25,7 +25,9 @@ def create_forum():
         session.commit()
         return redirect(url_for('views.home'))
     tags = TagModel.query.all()
-    return render_template("forum_create.html", form = form, tags = tags)
+    #return render_template("forum_create.html", form = form, tags = tags)
+    response = make_response(render_template("forum_create.html",  form = form, tags = tags))
+    return response
 
 @forum_blueprint.route("/created-forum/")
 @login_required
@@ -35,10 +37,11 @@ def user_forum():
     return render_template('created_forum.html',forums = forums)
 
 @forum_blueprint.route("/<slush>/", methods=['GET','POST'])
-@login_required
 def single_forum(slush):
     form = ReplyForm(request.form)
     forum = Forum.query.filter(Forum.slush == slush).one()
+
+    user_authentication()
 
     if request.method == 'POST' and form.validate():
         form_dict = request.form.to_dict()
@@ -73,7 +76,14 @@ def update_user_forum(id):
 @forum_blueprint.route("/created-forum/delete/<id>/", methods=["GET"])
 @login_required
 def delete_forum(id):
+    
     forum = Forum.query.filter(Forum.id == id).delete()
     session.commit()
     flash("One forum have been deleted.", category="success")
     return redirect(url_for("forum_blueprint.user_forum"))
+
+
+def user_authentication():
+    if request.method == 'POST' and current_user.is_anonymous:
+        flash("Please login to continue.", category='info')
+        return redirect(url_for('auth.login'))

@@ -1,10 +1,11 @@
 import os
-
+import dotenv
+dotenv.load_dotenv()
 class Config(object):
     DEBUG = True
     TESTING = False
     CSRF_ENABLED = True
-    SECRET_KEY = '57e19ea558d4967a552d03deece34a70'
+    SECRET_KEY = os.getenv("SECRET_KEY")
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 class ProductionConfig(Config):
@@ -15,3 +16,4 @@ class DevelopmentConfig(Config):
     ENV="development"
     DEVELOPMENT=True
     DEBUG=True
+    HOST='0.0.0.0'

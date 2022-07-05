@@ -1,4 +1,4 @@
-from flask import render_template, redirect, url_for, Blueprint, flash, request
+from flask import render_template, redirect, url_for, Blueprint, flash, request, make_response
 
 from flask_login import login_required, login_user, logout_user
 
@@ -29,7 +29,7 @@ def register():
             flash("Thanks for registering")
             
             return redirect(url_for('views.home'))
-        flash("Password must match!")    
+        flash("Password not match!")    
 
     return render_template('register.html', form = form)
     
